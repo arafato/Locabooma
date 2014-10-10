@@ -66,13 +66,6 @@
     <Content Include="pages\hub\section1Page.js" />
     <Content Include="pages\hub\section2Page.html" />
     <Content Include="pages\hub\section2Page.js" />
-    <Content Include="pages\hub\section3Page.html" />
-    <Content Include="pages\hub\section3Page.js" />
-    <Content Include="pages\hub\section4Page.html" />
-    <Content Include="pages\hub\section4Page.js" />
-    <Content Include="pages\item\item.css" />
-    <Content Include="pages\item\item.html" />
-    <Content Include="pages\item\item.js" />
     <Content Include="default.html" />
     <Content Include="css\ui-themed.css" />
     <Content Include="css\ui-themed.theme-dark.css" />

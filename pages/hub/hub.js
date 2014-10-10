@@ -31,13 +31,6 @@
             // TODO: Initialize the page here.
         },
 
-        section3DataSource: section3Items.dataSource,
-
-        section3ItemNavigate: util.markSupportedForProcessing(function (args) {
-            var item = Data.getItemReference(section3Items.getAt(args.detail.itemIndex));
-            nav.navigate("/pages/item/item.html", { item: item });
-        }),
-
         unload: function () {
             // TODO: Respond to navigations away from this page.
         },
