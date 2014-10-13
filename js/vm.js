@@ -11,7 +11,6 @@
             this.image = ko.observable(""); // encoded string
         },
 
-        // TODO: Add list and according functions for favorites
         bmManager: (function (entries) {
             var self = this;
             // self.db = storage.storageUnit.instance();
@@ -68,6 +67,10 @@
                 //window.external.notify("LocationBookmarker.Maps:" + longitude + "," + latitude);
                 //navigator.plugins.nativemap.show(function (msg) { }, function (msg) { alert(msg); }, [longitude, latitude]);
             }
+        })(),
+
+        favoriteManager: (function () {
+
         })()
     });
 })();
