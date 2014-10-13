@@ -57,7 +57,10 @@
     <Content Include="images\StoreLogo.scale-240.png" />
     <Content Include="images\gray.png" />
     <Content Include="js\default.js" />
+    <Content Include="js\ko-extensions\customBindingHandlers.js" />
+    <Content Include="js\ko-extensions\customObservables.js" />
     <Content Include="js\navigator.js" />
+    <Content Include="packages.config" />
     <Content Include="pages\hub\hubPhone.css" />
     <Content Include="pages\hub\hub.html" />
     <Content Include="pages\hub\hub.js" />
@@ -69,6 +72,8 @@
     <Content Include="css\ui-themed.css" />
     <Content Include="css\ui-themed.theme-dark.css" />
     <Content Include="css\ui-themed.theme-light.css" />
+    <Content Include="Scripts\knockout-3.2.0.debug.js" />
+    <Content Include="Scripts\knockout-3.2.0.js" />
     <PRIResource Include="strings\en-US\resources.resjson" />
   </ItemGroup>
   <ItemGroup>
