@@ -31,6 +31,8 @@
                 return sched.requestDrain(sched.Priority.aboveNormal + 1);
             }).then(function () {
                 ui.enableAnimations();
+            }).then(function () {
+                // TODO: Initialize bmManager,, load from var objectRef = WinJS.Application.local;
             });
 
             args.setPromise(p);
