@@ -6,10 +6,9 @@
 
     <link href="/css/phone.css" rel="stylesheet" />
     <link href="/pages/hub/hubphone.css" rel="stylesheet" />
-    <script src="/js/data.js"></script>
     <script src="/pages/hub/hub.js"></script>
-    <script src="/pages/hub/section1Page.js"></script>
-    <script src="/pages/hub/section2Page.js"></script>
+    <script src="/pages/hub/all.js"></script>
+    <script src="/pages/hub/favorites.js"></script>
 </head>
 <body>
     <div class="hubpage fragment">
@@ -21,15 +20,15 @@
         </header>
 
         <section aria-label="Main content" role="main">
-            <!-- Customize the Hub control by modifying the HubSection controls here. -->
 
             <div class="hub" data-win-control="WinJS.UI.Pivot">
 
-                <div class="section1 section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ isHeaderStatic: true }" data-win-res="{ winControl: {'header': 'Section1'} }">
+                <!--TODO: Localization of header title-->
+                <div class="section1 section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ isHeaderStatic: true }" data-win-res="{ winControl: {'header': 'All'} }">
                     <div class="sectioncontrol" id="section1contenthost" data-win-control="HubApps_SectionControls.Section1Control"></div>
                 </div>
 
-                <div class="section2 section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ isHeaderStatic: true }" data-win-res="{ winControl: {'header': 'Section2'} }">
+                <div class="section2 section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ isHeaderStatic: true }" data-win-res="{ winControl: {'header': 'Favorites'} }">
                     <div class="sectioncontrol" id="section2contenthost" data-win-control="HubApps_SectionControls.Section2Control"></div>
                 </div>
             </div>

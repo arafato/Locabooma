@@ -9,12 +9,10 @@
             this.longitude = ko.observable(0.0);
             this.latitude = ko.observable(0.0);
             this.image = ko.observable(""); // encoded string
-            this.getFormattedDate = function () {
-                return new Date(self.date);
-            }
         },
 
-        bmManager: function (entries) {
+        // TODO: Add list and according functions for favorites
+        bmManager: (function (entries) {
             var self = this;
             // self.db = storage.storageUnit.instance();
             self.bookmarks = ko.observableArray(entries);
@@ -70,6 +68,6 @@
                 //window.external.notify("LocationBookmarker.Maps:" + longitude + "," + latitude);
                 //navigator.plugins.nativemap.show(function (msg) { }, function (msg) { alert(msg); }, [longitude, latitude]);
             }
-        }
+        })()
     });
 })();

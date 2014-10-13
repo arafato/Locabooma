@@ -65,10 +65,10 @@
     <Content Include="pages\hub\hubPhone.css" />
     <Content Include="pages\hub\hub.html" />
     <Content Include="pages\hub\hub.js" />
-    <Content Include="pages\hub\section1Page.html" />
-    <Content Include="pages\hub\section1Page.js" />
-    <Content Include="pages\hub\section2Page.html" />
-    <Content Include="pages\hub\section2Page.js" />
+    <Content Include="pages\hub\all.html" />
+    <Content Include="pages\hub\all.js" />
+    <Content Include="pages\hub\favorites.html" />
+    <Content Include="pages\hub\favorites.js" />
     <Content Include="default.html" />
     <Content Include="css\ui-themed.css" />
     <Content Include="css\ui-themed.theme-dark.css" />
