@@ -67,10 +67,10 @@
                 //window.external.notify("LocationBookmarker.Maps:" + longitude + "," + latitude);
                 //navigator.plugins.nativemap.show(function (msg) { }, function (msg) { alert(msg); }, [longitude, latitude]);
             }
-        })(),
+        })([]),
 
-        favoriteManager: (function () {
+        favoriteManager: (function (entries) {
 
-        })()
+        })([])
     });
 })();
