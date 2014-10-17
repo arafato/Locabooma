@@ -32,7 +32,7 @@
             }).then(function () {
                 ui.enableAnimations();
             }).then(function () {
-                // TODO: Initialize bmManager,, load from var objectRef = WinJS.Application.local;
+                ko.applyBindings(new vm.all([], document.getElementById("all-bookmarks")));
             });
 
             args.setPromise(p);
@@ -46,6 +46,24 @@
         // suspended, call args.setPromise().
         app.sessionState.history = nav.history;
     };
+
+    function loadBookmarks(filename) {
+        
+        var storage = WinJS.Application.local; 
+        var entries = [];
+        if (storage.exists(filename)) {
+            storage.readText(filename, "").then(function (content) {
+                entries = JSON.parse(content);
+            })
+        }
+
+        return entries;
+    }
+
+    function saveBookmarks(filename, json) {
+        var storage = WinJS.Application.local;
+        storage.writeText(filename, json);
+    }
 
     function hookUpBackButtonGlobalEventHandlers() {
         // Subscribes to global events on the window object

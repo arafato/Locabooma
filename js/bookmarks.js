@@ -15,7 +15,7 @@
             var self = this;
             // self.db = storage.storageUnit.instance();
             self.bookmarks = ko.observableArray(entries);
-            self.currentBookmark = ko.observable(new bookmark());
+            self.currentBookmark = ko.observable(new vm.bookmark());
             self.deleteBookmark = function () {
                 var index = self.bookmarks.indexOf(self.currentBookmark());
                 self.bookmarks.splice(index, 1);
@@ -26,7 +26,7 @@
                 this.bookmarks = entries;
             }
             self.createBookmark = function () {
-                var bmark = new bookmark("New Bookmark", "");
+                var bmark = new vm.bookmark("New Bookmark", "");
                 //navigator.geolocation.getCurrentPosition(function (position) {
                 //    bmark.longitude(position.coords.longitude);
                 //    bmark.latitude(position.coords.latitude);

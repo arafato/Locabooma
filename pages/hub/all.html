@@ -5,19 +5,22 @@
     <script src="/pages/hub/all.js"></script>
 </head>
 <body>
-
     <div id="all-bookmarks">
-        <div data-bind="template: { name: 'all-template', foreach: bookmarks }"></div>
+        <!-- ko if: bookmarks.length == 0 -->
+        <h4>So empty in here :-(</h4>
+        <!-- /ko -->
+
+        <div data-bind="template: { name: 'all-list-template', foreach: bookmarks }"></div>
     </div>
 
-    <script type="text/html" id="all-template">
-       <div class="bookmark-entry" data-bind="click: $root.selectBookmark">
-           <img class="picture"  src="#" data-bind="attr: { src: image }" />
-           <div class="text">
-               <h4 data-bind="text: title"></h4>
-               <h6 data-bind="text: description"></h6>
-           </div>
-       </div>
+    <script type="text/html" id="all-list-template">
+        <div class="bookmark-entry" data-bind="click: $root.selectBookmark">
+            <img class="picture" src="#" data-bind="attr: { src: image }" />
+            <div class="text">
+                <h4 data-bind="text: title"></h4>
+                <h6 data-bind="text: description"></h6>
+            </div>
+        </div>
     </script>
 </body>
 </html>
