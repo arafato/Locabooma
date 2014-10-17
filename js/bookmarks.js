@@ -1,5 +1,5 @@
 ﻿(function () {
-    WinJS.Namespace.define("Models", {
+    WinJS.Namespace.define("vm", {
         bookmark: function (title, description) {
             var self = this;
             // Also serves as ID
@@ -11,7 +11,7 @@
             this.image = ko.observable(""); // encoded string
         },
 
-        bmManager: (function (entries) {
+        all: function (entries) {
             var self = this;
             // self.db = storage.storageUnit.instance();
             self.bookmarks = ko.observableArray(entries);
@@ -70,14 +70,14 @@
                 //window.external.notify("LocationBookmarker.Maps:" + longitude + "," + latitude);
                 //navigator.plugins.nativemap.show(function (msg) { }, function (msg) { alert(msg); }, [longitude, latitude]);
             }
-        })([]),
+        },
 
-        favoriteManager: (function (entries) {
+        favorites: function (entries) {
             self.bookmarks = ko.observableArray(entries);
 
             self.init = function (entries) {
                 this.bookmarks = entries;
             }
-        })([])
+        }
     });
 })();
