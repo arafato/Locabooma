@@ -5,17 +5,32 @@
     <script src="/pages/hub/all.js"></script>
 </head>
 <body>
-    <div class="fragment section1page">
-        <section aria-label="Main content" role="main">
-            <img src="/images/gray.png" />
-            <div class="title label-extralarge" data-win-res="{ textContent: 'Section1Title' }"></div>
-            <div class="subtext label-medium" data-win-res="{ textContent: 'Section1Subtext' }"></div>
-            <div class="label-mediummid">
-                <span data-win-res="{ textContent: 'Section1Description' }"></span>
-                <span data-win-res="{ textContent: 'Section1Description' }"></span>
-                <span data-win-res="{ textContent: 'Section1Description' }"></span>
-            </div>
-        </section>
+
+    <div id="all-bookmarks">
+        <div data-bind="template: { name: 'all-template', foreach: bookmarks }"></div>
     </div>
+
+    <script type="text/html" id="all-template">
+       <div class="bookmark-entry" data-bind="click: $root.selectBookmark">
+           <img class="picture"  src="#" data-bind="attr: { src: image }" />
+           <div class="text">
+               <h4 data-bind="text: title"></h4>
+               <h6 data-bind="text: description"></h6>
+           </div>
+       </div>
+    </script>
 </body>
 </html>
+
+<!--<div class="fragment section1page">
+    <section aria-label="Main content" role="main">
+        <img src="/images/gray.png" />
+        <div class="title label-extralarge" data-win-res="{ textContent: 'Section1Title' }"></div>
+        <div class="subtext label-medium" data-win-res="{ textContent: 'Section1Subtext' }"></div>
+        <div class="label-mediummid">
+            <span data-win-res="{ textContent: 'Section1Description' }"></span>
+            <span data-win-res="{ textContent: 'Section1Description' }"></span>
+            <span data-win-res="{ textContent: 'Section1Description' }"></span>
+        </div>
+    </section>
+</div>-->

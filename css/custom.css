@@ -1,0 +1,15 @@
+﻿.bookmark-entry {
+    width: 100%;
+    height: 150px;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.bookmark-list .image {
+    width: 150px;
+}
+
+.bookmark-list .text {
+    -ms-flex: 1;
+    flex: 1;
+}
