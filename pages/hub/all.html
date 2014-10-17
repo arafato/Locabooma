@@ -6,10 +6,7 @@
 </head>
 <body>
     <div id="all-bookmarks">
-        <!-- ko if: bookmarks.length == 0 -->
-        <h4>So empty in here :-(</h4>
-        <!-- /ko -->
-
+        <h4 data-bind="visible: bookmarks().length == 0">So empty in here :-(</h4>
         <div data-bind="template: { name: 'all-list-template', foreach: bookmarks }"></div>
     </div>
 
@@ -24,16 +21,3 @@
     </script>
 </body>
 </html>
-
-<!--<div class="fragment section1page">
-    <section aria-label="Main content" role="main">
-        <img src="/images/gray.png" />
-        <div class="title label-extralarge" data-win-res="{ textContent: 'Section1Title' }"></div>
-        <div class="subtext label-medium" data-win-res="{ textContent: 'Section1Subtext' }"></div>
-        <div class="label-mediummid">
-            <span data-win-res="{ textContent: 'Section1Description' }"></span>
-            <span data-win-res="{ textContent: 'Section1Description' }"></span>
-            <span data-win-res="{ textContent: 'Section1Description' }"></span>
-        </div>
-    </section>
-</div>-->

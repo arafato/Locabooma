@@ -7,6 +7,7 @@
         // the resulting elements have been parented to the DOM. 
         ready: function (element, options) {
             options = options || {};
+            ko.applyBindings(new vm.all([], document.getElementById("all-bookmarks")));
         },
     });
 

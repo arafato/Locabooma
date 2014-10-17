@@ -31,8 +31,6 @@
                 return sched.requestDrain(sched.Priority.aboveNormal + 1);
             }).then(function () {
                 ui.enableAnimations();
-            }).then(function () {
-                ko.applyBindings(new vm.all([], document.getElementById("all-bookmarks")));
             });
 
             args.setPromise(p);
