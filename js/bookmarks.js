@@ -22,9 +22,6 @@
                 self.db.remove(self.currentBookmark().date);
                 //window.location = "#overview";
             }
-            self.init = function (entries) {
-                this.bookmarks = entries;
-            }
             self.createBookmark = function () {
                 var bmark = new vm.bookmark("New Bookmark", "");
                 //navigator.geolocation.getCurrentPosition(function (position) {
@@ -74,10 +71,6 @@
 
         favorites: function (entries) {
             self.bookmarks = ko.observableArray(entries);
-
-            self.init = function (entries) {
-                this.bookmarks = entries;
-            }
         }
     });
 })();

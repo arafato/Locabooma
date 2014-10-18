@@ -5,11 +5,11 @@
     display: flex;
 }
 
-.bookmark-list .image {
-    width: 150px;
+.bookmark-entry img {
+    width: 100px !important;
 }
 
-.bookmark-list .text {
+.bookmark-entry .text {
     -ms-flex: 1;
     flex: 1;
 }

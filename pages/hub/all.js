@@ -7,8 +7,19 @@
         // the resulting elements have been parented to the DOM. 
         ready: function (element, options) {
             options = options || {};
-            ko.applyBindings(new vm.all([], document.getElementById("all-bookmarks")));
+            var entries = this.loadBookmarks();
+            ko.applyBindings(new vm.all(entries), document.getElementById("all-bookmarks"));
         },
+
+        loadBookmarks: function () {
+            var entries = [];
+            var bmark = new vm.bookmark("Title", "Description");
+            bmark.longitude(20.0);
+            bmark.latitude(20.0);
+            bmark.image("");
+            entries.push(bmark);
+            return entries;
+        }
     });
 
     // The following lines expose this control constructor as a global. 

@@ -2,22 +2,31 @@
 <html>
 <head>
     <title></title>
-    <script src="/pages/hub/all.js"></script>
 </head>
 <body>
+
     <div id="all-bookmarks">
-        <h4 data-bind="visible: bookmarks().length == 0">So empty in here :-(</h4>
+        <h2 data-bind="visible: bookmarks().length == 0">So empty in here :-(</h2>
+
         <div data-bind="template: { name: 'all-list-template', foreach: bookmarks }"></div>
+
+        <!--<div data-win-control="WinJS.UI.ListView"
+             data-bind="datasource:bookmarks, template:all-list-template"
+             style="height:100%"
+             id="listview">
+        </div>-->
     </div>
 
     <script type="text/html" id="all-list-template">
-        <div class="bookmark-entry" data-bind="click: $root.selectBookmark">
-            <img class="picture" src="#" data-bind="attr: { src: image }" />
-            <div class="text">
-                <h4 data-bind="text: title"></h4>
-                <h6 data-bind="text: description"></h6>
+        <!--<div data-bind="foreach: bookmarks">-->
+            <div class="bookmark-entry" data-bind="click: $root.selectBookmark">
+                <img src="#" data-bind="attr: { src: image }" />
+                <div class="text">
+                    <h4 data-bind="text: title"></h4>
+                    <h6 data-bind="text: description"></h6>
+                </div>
             </div>
-        </div>
+        <!--</div>-->
     </script>
 </body>
 </html>
