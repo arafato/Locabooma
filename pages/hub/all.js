@@ -8,18 +8,14 @@
         ready: function (element, options) {
             options = options || {};
             var entries = this.loadBookmarks();
-            ko.applyBindings(new vm.all(entries), document.getElementById("all-bookmarks"));
+            WinJS.Binding.processAll(document.getElementById("all-bookmarks"), new vm.all(entries));
+            //WinJS.Binding.processAll(document.getElementById("all-bookmarks"), WinJS.Binding.List([{title:"foo", description:"bar"}]));
         },
 
         loadBookmarks: function () {
-            var entries = [];
-            var bmark = new vm.bookmark("Title", "Description");
-            bmark.longitude(20.0);
-            bmark.latitude(20.0);
-            bmark.image("");
-            entries.push(bmark);
-            return entries;
+            return [{ title: "title1", description: "description1" }, { title: "title2", description: "description2" }];
         }
+        
     });
 
     // The following lines expose this control constructor as a global. 

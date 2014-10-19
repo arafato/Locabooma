@@ -1,29 +1,26 @@
 ﻿(function () {
     WinJS.Namespace.define("vm", {
-        bookmark: function (title, description) {
-            var self = this;
-            // Also serves as ID
-            this.date = Date.now();
-            this.title = ko.observable(title);
-            this.description = ko.observable(description);
-            this.longitude = ko.observable(0.0);
-            this.latitude = ko.observable(0.0);
-            this.image = ko.observable(""); // encoded string
+
+        bookmark : function(title, description) {
+            this.date = Date.now(),
+            this.title = "",
+            this.description = "",
+            this.longitude = 0.0,
+            this.latitude = 0.0,
+            this.image = ""
         },
 
         all: function (entries) {
             var self = this;
-            // self.db = storage.storageUnit.instance();
-            self.bookmarks = ko.observableArray(entries);
-            self.currentBookmark = ko.observable(new vm.bookmark());
-            self.deleteBookmark = function () {
+            this.bookmarks = new WinJS.Binding.List(WinJS.Binding.as(entries));
+            this.currentBookmark = vm.bookmark();
+            this.deleteBookmark = function () {
                 var index = self.bookmarks.indexOf(self.currentBookmark());
                 self.bookmarks.splice(index, 1);
                 self.db.remove(self.currentBookmark().date);
-                //window.location = "#overview";
             }
-            self.createBookmark = function () {
-                var bmark = new vm.bookmark("New Bookmark", "");
+            this.createBookmark = function () {
+                var bmark = new vm.bookmark({ title: "New Bookmark", description: "" });
                 //navigator.geolocation.getCurrentPosition(function (position) {
                 //    bmark.longitude(position.coords.longitude);
                 //    bmark.latitude(position.coords.latitude);
@@ -34,7 +31,7 @@
                 self.currentBookmark(bmark);
                 return true;
             }
-            self.saveBookmark = function () {
+            this.saveBookmark = function () {
                 self.bookmarks.push(self.currentBookmark());
                 $("#overview").trigger("create");
                 var date = self.currentBookmark().date;
@@ -42,11 +39,11 @@
                 self.db.set(date, obj, function () { }, function (msg) { alert("Error saving bookmark in storage: " + msg) });
                 //window.location = "#overview";
             }
-            self.selectBookmark = function () {
+            this.selectBookmark = function () {
                 self.currentBookmark(this);
                 return true;
             }
-            self.takePhoto = function () {
+            this.takePhoto = function () {
                 //navigator.camera.getPicture(function (imageData) {
                 //    var encodedImage = "data:image/jpeg;base64," + imageData;
                 //    var image = document.getElementById("image");
@@ -61,7 +58,7 @@
                 //    destinationType: Camera.DestinationType.DATA_URL
                 //});
             }
-            self.launchMap = function () {
+            this.launchMap = function () {
                 var longitude = self.currentBookmark().longitude();
                 var latitude = self.currentBookmark().latitude();
                 //window.external.notify("LocationBookmarker.Maps:" + longitude + "," + latitude);
@@ -73,4 +70,9 @@
             self.bookmarks = ko.observableArray(entries);
         }
     });
+
+    //WinJS.Namespace.define("Sample.ListView", {
+    //    data: new WinJS.Binding.List([{ title: "title", description: "descr" }, { title: "title2", description: "descr2" }])
+    //});
+
 })();
