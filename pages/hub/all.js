@@ -9,7 +9,6 @@
             options = options || {};
             var entries = this.loadBookmarks();
             WinJS.Binding.processAll(document.getElementById("all-bookmarks"), new vm.all(entries));
-            //WinJS.Binding.processAll(document.getElementById("all-bookmarks"), WinJS.Binding.List([{title:"foo", description:"bar"}]));
         },
 
         loadBookmarks: function () {

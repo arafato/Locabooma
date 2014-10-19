@@ -7,7 +7,7 @@
 
     <div id="all-list-template" data-win-control="WinJS.Binding.Template">
         <div class="bookmark-entry">
-            <!--<img src="#" data-bind="attr: { src: image }" />-->
+            <!--<img src="#" data-win-bind="src: image" />-->
             <img class="bookmark-image" src="#" />
             <div class="bookmark-detail">
                 <h4 data-win-bind="textContent: title"></h4>
@@ -18,7 +18,6 @@
 
     <div id="all-bookmarks">
         <!--<h2 data-bind="visible: bookmarks().length == 0">So empty in here :-(</h2>-->
-        <!--<div data-bind="template: { name: 'all-list-template', foreach: bookmarks }"></div>-->
         <div data-win-control="WinJS.UI.ListView"
              data-win-bind="winControl.itemDataSource: bookmarks.dataSource"
              data-win-options="{
