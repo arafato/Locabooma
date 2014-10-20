@@ -3,8 +3,8 @@
 
         bookmark : function(title, description) {
             this.date = Date.now(),
-            this.title = "",
-            this.description = "",
+            this.title = title,
+            this.description = description,
             this.longitude = 0.0,
             this.latitude = 0.0,
             this.image = ""

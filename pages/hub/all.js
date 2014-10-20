@@ -12,7 +12,10 @@
         },
 
         loadBookmarks: function () {
-            return [{ title: "title1", description: "description1" }, { title: "title2", description: "description2" }];
+            var entries = [];
+            entries.push(new vm.bookmark("title1", "desc1"));
+            entries.push(new vm.bookmark("title2", "desc2"));
+            return entries;
         }
         
     });
