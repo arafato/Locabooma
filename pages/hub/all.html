@@ -18,11 +18,12 @@
 
     <div id="all-bookmarks">
         <!--<h2 data-bind="visible: bookmarks().length == 0">So empty in here :-(</h2>-->
-        <div data-win-control="WinJS.UI.ListView"
+        <div id="listview" data-win-control="WinJS.UI.ListView"
              data-win-bind="winControl.itemDataSource: bookmarks.dataSource"
              data-win-options="{
                 itemTemplate: select('#all-list-template'),
-                layout: { type: WinJS.UI.ListLayout }
+                layout: { type: WinJS.UI.ListLayout },
+                tapBehavior: 'invokeOnly'
              }">
         </div>
     </div>

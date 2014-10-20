@@ -2,13 +2,25 @@
     "use strict";
 
     var ControlConstructor = WinJS.UI.Pages.define("/pages/hub/all.html", {
-        // This function is called after the page control contents 
-        // have been loaded, controls have been activated, and 
-        // the resulting elements have been parented to the DOM. 
         ready: function (element, options) {
             options = options || {};
             var entries = this.loadBookmarks();
-            WinJS.Binding.processAll(document.getElementById("all-bookmarks"), new vm.all(entries));
+            // Maybe a singelton approach is better...
+            var allvm = new vm.all(entries);
+
+            var listView = element.querySelector('#listview').winControl;
+            function itemInvokedHandler(eventObject) {
+                eventObject.detail.itemPromise.done(function (i) {
+                    allvm.selectBookmark(i.index);
+                    // TODO: Navigate to detail view
+                });
+            }
+
+            listView.addEventListener("iteminvoked", itemInvokedHandler, false);
+
+            WinJS.Binding.processAll(document.getElementById("all-bookmarks"), allvm);
+
+            
         },
 
         loadBookmarks: function () {

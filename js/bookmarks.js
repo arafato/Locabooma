@@ -13,6 +13,7 @@
         all: function (entries) {
             var self = this;
             this.bookmarks = new WinJS.Binding.List(WinJS.Binding.as(entries));
+            
             this.currentBookmark = vm.bookmark();
             this.deleteBookmark = function () {
                 var index = self.bookmarks.indexOf(self.currentBookmark());
@@ -39,9 +40,8 @@
                 self.db.set(date, obj, function () { }, function (msg) { alert("Error saving bookmark in storage: " + msg) });
                 //window.location = "#overview";
             }
-            this.selectBookmark = function () {
-                self.currentBookmark(this);
-                return true;
+            this.selectBookmark = function (index) {
+                this.currentBookmark = this.bookmarks.getAt(index);
             }
             this.takePhoto = function () {
                 //navigator.camera.getPicture(function (imageData) {
