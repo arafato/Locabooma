@@ -4,6 +4,7 @@
     var ControlConstructor = WinJS.UI.Pages.define("/pages/hub/all.html", {
         ready: function (element, options) {
             options = options || {};
+
             var entries = this.loadBookmarks();
             // Maybe a singelton approach is better...
             var allvm = new vm.all(entries);
@@ -20,7 +21,7 @@
 
             WinJS.Binding.processAll(document.getElementById("all-bookmarks"), allvm);
 
-            
+
         },
 
         loadBookmarks: function () {
@@ -28,8 +29,7 @@
             entries.push(new vm.bookmark("title1", "desc1"));
             entries.push(new vm.bookmark("title2", "desc2"));
             return entries;
-        }
-        
+        },
     });
 
     // The following lines expose this control constructor as a global. 

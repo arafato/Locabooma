@@ -24,6 +24,21 @@
                 }
             }
 
+            hub.onselectionchanged = function (e) {
+                var appBar = document.getElementById("appbar").winControl;
+
+                switch (e.detail.index) {
+                    case 0:
+                        appBar.showOnlyCommands(['cmd']);
+                        break;
+                    case 1:
+                        appBar.showOnlyCommands(['cmd2']);
+                        break;
+                    default:
+                        throw new Error("no valid page");
+                }
+            }
+
             // TODO: Initialize the page here.
         },
 

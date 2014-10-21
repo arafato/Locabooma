@@ -23,14 +23,14 @@
 
         <section aria-label="Main content" role="main">
 
-            <div class="hub" data-win-control="WinJS.UI.Pivot">
+            <div id="pivot" class="hub" data-win-control="WinJS.UI.Pivot">
 
                 <!--TODO: Localization of header title-->
-                <div class="section1 section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ isHeaderStatic: true }" data-win-res="{ winControl: {'header': 'All'} }">
+                <div id="all-pivot" class="section1 section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ isHeaderStatic: true }" data-win-res="{ winControl: {'header': 'All'} }">
                     <div class="sectioncontrol" data-win-control="Locobooma_SectionControls.AllBookmarks"></div>
                 </div>
 
-                <div class="section2 section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ isHeaderStatic: true }" data-win-res="{ winControl: {'header': 'Favorites'} }">
+                <div id="fav-pivot" class="section2 section" data-win-control="WinJS.UI.PivotItem" data-win-options="{ isHeaderStatic: true }" data-win-res="{ winControl: {'header': 'Favorites'} }">
                     <div class="sectioncontrol" data-win-control="Locobooma_SectionControls.FavoriteBookmarks"></div>
                 </div>
             </div>
