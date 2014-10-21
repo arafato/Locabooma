@@ -10,10 +10,11 @@
             var allvm = new vm.all(entries);
 
             var listView = element.querySelector('#listview').winControl;
+
             function itemInvokedHandler(eventObject) {
                 eventObject.detail.itemPromise.done(function (i) {
                     allvm.selectBookmark(i.index);
-                    // TODO: Navigate to detail view
+                    WinJS.Navigation.navigate("pages/detail/detail.html", allvm.currentBookmark);
                 });
             }
 
