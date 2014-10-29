@@ -6,7 +6,6 @@
             options = options || {};
 
             var entries = this.loadBookmarks();
-            // Maybe a singelton approach is better...
             var allvm = new vm.all(entries);
 
             var listViewZi = element.querySelector('#listview-zoomedin').winControl;
