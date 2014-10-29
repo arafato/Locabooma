@@ -7,26 +7,9 @@
 
             var entries = this.loadBookmarks();
             var allvm = new vm.all(entries);
-
-            var listViewZi = element.querySelector('#listview-zoomedin').winControl;
-            listViewZi.itemDataSource = allvm.bookmarks.dataSource;
-            listViewZi.groupDataSource = allvm.bookmarks.groups.dataSource;
-
-            var listViewZo = element.querySelector('#listview-zoomedout').winControl;
-            listViewZo.itemDataSource = allvm.bookmarks.groups.dataSource;
-
-            function itemInvokedHandler(eventObject) {
-                eventObject.detail.itemPromise.done(function (i) {
-                    allvm.selectBookmark(i.index);
-                    WinJS.Navigation.navigate("pages/detail/detail.html", allvm.currentBookmark);
-                });
-            }
-
-            listViewZi.addEventListener("iteminvoked", itemInvokedHandler, false);
-
+            this.setup(allvm, element, options);
+            
             WinJS.Binding.processAll(document.getElementById("all-bookmarks"), allvm);
-
-
         },
 
         loadBookmarks: function () {
@@ -42,6 +25,24 @@
             entries.push(new vm.bookmark("Z title2", "desc2"));
             return entries;
         },
+
+        setup: function (allvm, element, options) {
+            var listViewZi = element.querySelector('#listview-zoomedin').winControl;
+            listViewZi.itemDataSource = allvm.bookmarks.dataSource;
+            listViewZi.groupDataSource = allvm.bookmarks.groups.dataSource;
+
+            var listViewZo = element.querySelector('#listview-zoomedout').winControl;
+            listViewZo.itemDataSource = allvm.bookmarks.groups.dataSource;
+
+            function itemInvokedHandler(eventObject) {
+                eventObject.detail.itemPromise.done(function (i) {
+                    allvm.selectBookmark(i.index);
+                    WinJS.Navigation.navigate("pages/detail/detail.html", allvm.currentBookmark);
+                });
+            }
+
+            listViewZi.addEventListener("iteminvoked", itemInvokedHandler, false);
+        }
     });
 
     // The following lines expose this control constructor as a global. 
