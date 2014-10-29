@@ -9,7 +9,12 @@
             // Maybe a singelton approach is better...
             var allvm = new vm.all(entries);
 
-            var listView = element.querySelector('#listview').winControl;
+            var listViewZi = element.querySelector('#listview-zoomedin').winControl;
+            listViewZi.itemDataSource = allvm.bookmarks.dataSource;
+            listViewZi.groupDataSource = allvm.bookmarks.groups.dataSource;
+
+            var listViewZo = element.querySelector('#listview-zoomedout').winControl;
+            listViewZo.itemDataSource = allvm.bookmarks.groups.dataSource;
 
             function itemInvokedHandler(eventObject) {
                 eventObject.detail.itemPromise.done(function (i) {
@@ -18,7 +23,7 @@
                 });
             }
 
-            listView.addEventListener("iteminvoked", itemInvokedHandler, false);
+            listViewZi.addEventListener("iteminvoked", itemInvokedHandler, false);
 
             WinJS.Binding.processAll(document.getElementById("all-bookmarks"), allvm);
 
@@ -27,8 +32,15 @@
 
         loadBookmarks: function () {
             var entries = [];
-            entries.push(new vm.bookmark("title1", "desc1"));
-            entries.push(new vm.bookmark("title2", "desc2"));
+            entries.push(new vm.bookmark("A title1", "desc1"));
+            entries.push(new vm.bookmark("B title2", "desc2"));
+            entries.push(new vm.bookmark("C title2", "desc2"));
+            entries.push(new vm.bookmark("D title2", "desc2"));
+            entries.push(new vm.bookmark("R title2", "desc2"));
+            entries.push(new vm.bookmark("V title2", "desc2"));
+            entries.push(new vm.bookmark("S title2", "desc2"));
+            entries.push(new vm.bookmark("S title2", "desc2"));
+            entries.push(new vm.bookmark("Z title2", "desc2"));
             return entries;
         },
     });

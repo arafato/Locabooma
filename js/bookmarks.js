@@ -1,4 +1,22 @@
 ﻿(function () {
+
+    // Sorts the groups.
+    function compareGroups(leftKey, rightKey) {
+        return leftKey.charCodeAt(0) - rightKey.charCodeAt(0);
+    }
+
+    // Returns the group key that an item belongs to.
+    function getGroupKey(dataItem) {
+        return dataItem.title.toUpperCase().charAt(0);
+    }
+
+    // Returns the title for a group.
+    function getGroupData(dataItem) {
+        return {
+            title: dataItem.title.toUpperCase().charAt(0)
+        };
+    }
+
     WinJS.Namespace.define("vm", {
 
         bookmark : function(title, description) {
@@ -12,7 +30,10 @@
 
         all: function (entries) {
             var self = this;
-            this.bookmarks = new WinJS.Binding.List(WinJS.Binding.as(entries));
+
+            var bm = new WinJS.Binding.List(WinJS.Binding.as(entries));
+
+            this.bookmarks = bm.createGrouped(getGroupKey, getGroupData, compareGroups);
             
             this.currentBookmark = vm.bookmark();
             this.deleteBookmark = function () {

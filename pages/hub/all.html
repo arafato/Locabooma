@@ -5,7 +5,13 @@
 </head>
 <body>
 
-    <div id="all-list-template" data-win-control="WinJS.Binding.Template">
+    <div id="zoom-header-template" data-win-control="WinJS.Binding.Template" style="display:none">
+        <div class="headerItem">
+            <h1 data-win-bind="textContet: title"></h1>
+        </div>
+    </div>
+
+    <div id="all-zi-content-template" data-win-control="WinJS.Binding.Template" style="display:none">
         <div class="bookmark-entry">
             <!--<img src="#" data-win-bind="src: image" />-->
             <img class="bookmark-image" src="#" />
@@ -16,16 +22,35 @@
         </div>
     </div>
 
-    <div id="all-bookmarks">
-        <!--<h2 data-bind="visible: bookmarks().length == 0">So empty in here :-(</h2>-->
-        <div id="listview" data-win-control="WinJS.UI.ListView"
-             data-win-bind="winControl.itemDataSource: bookmarks.dataSource"
-             data-win-options="{
-                itemTemplate: select('#all-list-template'),
-                layout: { type: WinJS.UI.ListLayout },
-                tapBehavior: 'invokeOnly'
-             }">
+    <div id="all-list-zo-template" data-win-control="WinJS.Binding.Template" style="display:none">
+        <div class="semanticZoomItem">
+            <div class="semanticZoomItem-Text" data-win-bind="textContent: title"></div>
         </div>
     </div>
+
+    <div id="all-bookmarks">
+        <div data-win-control="WinJS.UI.SemanticZoom">
+            <!--Zoomed-in View-->
+            <div id="listview-zoomedin"
+                 data-win-control="WinJS.UI.ListView"
+                 data-win-options="{
+                 itemTemplate: select('#all-zi-content-template'),
+                 layout: { type: WinJS.UI.ListLayout },
+                 groupHeaderTemplate: select('#zoom-header-template'),
+                 selectionMode: 'none', tapBehavior: 'none', swipeBehavior: 'none' }">
+            </div>
+
+            <!--Zoomed-out view-->
+            <div id="listview-zoomedout"
+                 data-win-control="WinJS.UI.ListView"
+                 data-win-options="{
+                 itemTemplate: select('#all-list-zo-template'),
+                 layout: { type: WinJS.UI.ListLayout },
+                 tapBehavior: 'invoke',
+                 swipeBehavior: 'none'}">
+            </div>
+        </div data-win-control="WinJS.UI.SemanticZoom">
+    </div>
+    <!--</div>-->
 </body>
 </html>
