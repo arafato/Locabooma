@@ -37,7 +37,7 @@
             function itemInvokedHandler(eventObject) {
                 eventObject.detail.itemPromise.done(function (i) {
                     allvm.selectBookmark(i.index);
-                    WinJS.Navigation.navigate("pages/detail/detail.html", allvm.currentBookmark);
+                    WinJS.Navigation.navigate("pages/detail/detail.html", allvm);
                 });
             }
 
