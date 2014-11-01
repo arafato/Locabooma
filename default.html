@@ -9,6 +9,8 @@
 
     <script src="//Microsoft.Phone.WinJS.2.1/js/base.js"></script>
     <script src="//Microsoft.Phone.WinJS.2.1/js/ui.js"></script>
+
+    <script src="js/common.js"></script>
     <script src="/js/navigator.js"></script>
     <script src="/js/default.js"></script>
     <script src="js/bookmarks.js"></script>
@@ -16,8 +18,8 @@
 <body class="phone">
     <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/pages/hub/hub.html'}"></div>
     <div id="appbar" data-win-control="WinJS.UI.AppBar">
-        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd', label:'Command', icon:'placeholder'}" type="button"></button>
-        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'cmd2', label:'Foo', icon:'save'}" type="button"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:common.constants.appBarNewId, label:'Command', icon:'placeholder'}" type="button"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:common.constants.appBarDeleteId, label:'Foo', icon:'save'}" type="button"></button>
     </div>
 </body>
 </html>

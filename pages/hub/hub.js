@@ -29,10 +29,10 @@
 
                 switch (e.detail.index) {
                     case 0:
-                        appBar.showOnlyCommands(['cmd']);
+                        appBar.showOnlyCommands([common.constants.appBarNewId]);
                         break;
                     case 1:
-                        appBar.showOnlyCommands(['cmd2']);
+                        appBar.showOnlyCommands([common.constants.appBarDeleteId]);
                         break;
                     default:
                         throw new Error("no valid page");
