@@ -5,11 +5,10 @@
             // TODO: bind current bookmark (in options) to view
             // appBar.showOnlyCommands(['detail...']);
 
-            //var button = document.getElementById("showlocmark");
-            //button.addEventListener("onclick", function (e) {
-                
-            //})
-
+            var button = document.getElementById("showlocmark");
+            button.addEventListener("click", function (e) {
+                options.print();
+            })
 
             WinJS.Binding.processAll(document.getElementById("detailpage"), options);
         },

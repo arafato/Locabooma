@@ -32,10 +32,6 @@
             var bm = new WinJS.Binding.List(WinJS.Binding.as(entries));
             this.bookmarks = bm.createGrouped(getGroupKey, getGroupData, compareGroups);
             this.currentBookmark = new vm.bookmark();
-
-            this.print = WinJS.Utilities.markSupportedForProcessing((function (ev) {
-                console.log(this.currentBookmark);
-            }).bind(this)); 
         }
 
         //this.deleteBookmark: function () {
@@ -101,5 +97,9 @@
     vm.all.prototype.selectBookmark = function (index) {
         this.currentBookmark = this.bookmarks.getAt(index);
     };
+
+    vm.all.prototype.print = function () {
+        console.log(this.currentBookmark);
+    }
 
 })();
