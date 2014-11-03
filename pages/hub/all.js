@@ -5,25 +5,14 @@
         ready: function (element, options) {
             options = options || {};
 
-            var entries = this.loadBookmarks();
-            var allvm = new vm.all(entries);
+            var allvm = locabooma.bmmanager.instance().all();
+            //var entries = this.loadBookmarks();
+            //var allvm = new vm.all(entries);
+
+
             this.setup(allvm, element, options);
             
             WinJS.Binding.processAll(document.getElementById("all-bookmarks"), allvm);
-        },
-
-        loadBookmarks: function () {
-            var entries = [];
-            entries.push(new vm.bookmark("A title1", "desc1"));
-            entries.push(new vm.bookmark("B title2", "desc2"));
-            entries.push(new vm.bookmark("C title2", "desc2"));
-            entries.push(new vm.bookmark("D title2", "desc2"));
-            entries.push(new vm.bookmark("R title2", "desc2"));
-            entries.push(new vm.bookmark("V title2", "desc2"));
-            entries.push(new vm.bookmark("S title2", "desc2"));
-            entries.push(new vm.bookmark("S title2", "desc2"));
-            entries.push(new vm.bookmark("Z title2", "desc2"));
-            return entries;
         },
 
         setup: function (allvm, element, options) {

@@ -1,7 +1,10 @@
-﻿(function () {
+﻿var locabooma = {};
+
+(function () {
+
     ///////////////////////////////////////////
     // Singleton Pattern
-    var bmmanager = (function () {
+    locabooma.bmmanager = (function () {
 
         ///////////////////////////////////////////
         // PRIVATE
@@ -9,10 +12,24 @@
 
             var storage = WinJS.Application.local;
             var entries = [];
-            if (storage.exists(filename)) {
-                storage.readText(filename, "").then(function (content) {
-                    entries = JSON.parse(content);
-                })
+            storage.exists(filename).then(function (exists) {
+                if (exists) {
+                    storage.readText(filename, "").then(function (content) {
+                        entries = JSON.parse(content);
+                    });
+                }
+            });
+
+            if (entries.length === 0) {
+                entries.push(new vm.bookmark("A title1", "desc1"));
+                entries.push(new vm.bookmark("B title2", "desc2"));
+                entries.push(new vm.bookmark("C title2", "desc2"));
+                entries.push(new vm.bookmark("D title2", "desc2"));
+                entries.push(new vm.bookmark("R title2", "desc2"));
+                entries.push(new vm.bookmark("V title2", "desc2"));
+                entries.push(new vm.bookmark("S title2", "desc2"));
+                entries.push(new vm.bookmark("S title2", "desc2"));
+                entries.push(new vm.bookmark("Z title2", "desc2"));
             }
 
             return entries;
@@ -23,6 +40,9 @@
             storage.writeText(filename, json);
         }
 
+        var _allvm = null;
+        var _favoritevm = null;
+
         ///////////////////////////////////////////
         ///////////////////////////////////////////
         function impl() {
@@ -30,13 +50,10 @@
                 throw new Error("not allowed");
             }
 
-            this.allBookmarks = null;
-            this.favoriteBookmarks = null;
-
             impl._instance = this;
         }
 
-        impl.getInstance() = function () {
+        impl.instance = function () {
             if (impl._instance === null) {
                 impl._instance = new impl();
             }
@@ -45,27 +62,28 @@
         }
 
         impl.prototype.loadAll = function () {
-            this.allBookmarks = loadBookmarks(common.constants.allFile);
+            var allBookmarks = loadBookmarks(common.constants.allFile);
+            _allvm = new vm.all(allBookmarks);
         }
 
         impl.prototype.loadFavorites = function () {
-            this.favoriteBookmarks = loadBookmarks(common.constants.favoritesFile);
+            var favoriteBookmarks = loadBookmarks(common.constants.favoritesFile);
         }
 
         impl.prototype.saveAll = function () {
-            saveBookmarks(common.constants.allFile, JSON.stringify(this.allBookmarks));
+            saveBookmarks(common.constants.allFile, JSON.stringify(_allvm));
         }
 
         impl.prototype.saveFavorites = function () {
-            saveBookmarks(common.constants.favoritesFile, JSON.stringify(this.favoriteBookmarks));
+            saveBookmarks(common.constants.favoritesFile, JSON.stringify(_favoritevm));
         }
 
         impl.prototype.all = function () {
-            return this.allBookmarks;
+            return _allvm;
         }
 
         impl.prototype.favorites = function () {
-            return this.favoriteBookmarks;
+            return _favoritevm;
         }
 
         impl._instance = null;
