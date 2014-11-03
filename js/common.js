@@ -3,7 +3,14 @@
     });
 
     WinJS.Namespace.define("common.constants", {
-        appBarNewId: "cmd",
-        appBarDeleteId: "cmd2"
+        ///////////////////////////////////////////
+        // APP BAR
+        appBarNewId: "ab-new",
+        appBarDeleteId: "ab-delete",
+
+        ///////////////////////////////////////////
+        // FILENAMES
+        allFile: "all.bom",
+        favoritesFile: "favorites.bom"
     });
 }());

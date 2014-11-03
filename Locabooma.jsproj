@@ -62,7 +62,8 @@
     <Content Include="js\common.js" />
     <Content Include="js\default.js" />
     <Content Include="js\navigator.js" />
-    <Content Include="js\bookmarks.js" />
+    <Content Include="js\vm.js" />
+    <Content Include="packages.config" />
     <Content Include="pages\detail\detail.html" />
     <Content Include="pages\detail\detail.js" />
     <Content Include="pages\hub\hubPhone.css" />
@@ -76,6 +77,12 @@
     <Content Include="css\ui-themed.css" />
     <Content Include="css\ui-themed.theme-dark.css" />
     <Content Include="css\ui-themed.theme-light.css" />
+    <Content Include="pages\new\new.html" />
+    <Content Include="pages\new\new.js" />
+    <Content Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
     <PRIResource Include="strings\en-US\resources.resjson" />
   </ItemGroup>
   <ItemGroup>
