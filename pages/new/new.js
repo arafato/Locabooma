@@ -1,6 +1,10 @@
 ﻿(function () {
     WinJS.UI.Pages.define("/pages/new/new.html", {
         ready: function (element, options) {
+
+            var appBar = document.getElementById("appbar").winControl;
+            appBar.showOnlyCommands([common.constants.appBarSaveId]);
+
             
             this.setupEventHandlers(options);
 

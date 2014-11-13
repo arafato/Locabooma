@@ -1,26 +1,28 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>New Bookmark</title>
     <script src="new.js"></script>
 </head>
 <body>
     <div id="bookmarkpage">
         <img id="image" src="#" />
 
+        <br />
+
         <label for="description">Description</label>
-        <input type="text" id="description" />
+        <textarea rows="3" id="description"></textarea>
 
         <label for="longitude">Longitude: </label>
-        <input type="number" id="longitude" />
+        <input type="number" id="longitude" readonly />
 
         <label for="latitude">Latitude:</label>
-        <input type="number" id="latitude" />
+        <input type="number" id="latitude" readonly />
 
         <label for="location">Location</label>
-        <input type="text" id="location">
+        <input type="text" id="location" readonly>
 
-        <button id="refreshButton"></button>
+        <button id="refreshButton">Refresh Location</button>
     </div>
 </body>
 </html>

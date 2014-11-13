@@ -1,14 +1,17 @@
 ﻿(function () {
     "use strict";
 
+    var abNew = document.getElementById(common.constants.appBarNewId);
+    abNew.addEventListener("click", function () {
+        WinJS.Navigation.navigate("pages/new/new.html");
+
+    })
+
     var ControlConstructor = WinJS.UI.Pages.define("/pages/hub/all.html", {
         ready: function (element, options) {
             options = options || {};
 
             var allvm = locabooma.bmmanager.instance().all();
-            //var entries = this.loadBookmarks();
-            //var allvm = new vm.all(entries);
-
 
             this.setup(allvm, element, options);
             
