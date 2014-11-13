@@ -1,13 +1,11 @@
-﻿var locabooma = {};
-
-(function () {
+﻿(function () {
 
     ///////////////////////////////////////////
     // Singleton Pattern
     locabooma.bmmanager = (function () {
 
-        ///////////////////////////////////////////
-        // PRIVATE
+            ///////////////////////////////////////////
+            // PRIVATE
         function loadBookmarks(filename) {
 
             var storage = WinJS.Application.local;

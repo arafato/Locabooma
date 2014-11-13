@@ -62,6 +62,7 @@
     <Content Include="js\bmmanager.js" />
     <Content Include="js\common.js" />
     <Content Include="js\default.js" />
+    <Content Include="js\location.js" />
     <Content Include="js\navigator.js" />
     <Content Include="js\vm.js" />
     <Content Include="packages.config" />

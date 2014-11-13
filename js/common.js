@@ -14,4 +14,6 @@
         allFile: "all.bom",
         favoritesFile: "favorites.bom"
     });
+
+    WinJS.Namespace.define("locabooma");
 }());
