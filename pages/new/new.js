@@ -5,7 +5,14 @@
             var appBar = document.getElementById("appbar").winControl;
             appBar.showOnlyCommands([common.constants.appBarSaveId]);
 
-            
+            var loc = locabooma.location.instance();
+
+            loc.getCurrentCoords().then(function (pos) {
+                var l = pos.longitude;
+            },
+            function (e) {
+            })
+
             this.setupEventHandlers(options);
 
             WinJS.Binding.processAll(document.getElementById("bookmarkpage"), options);

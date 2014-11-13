@@ -27,19 +27,22 @@
         }
 
         impl.prototype.getCurrentCoords = function () {
-            loc.getGeopositionAsync().done(
-            function (pos) { // position handler
-                return {
-                    longitude: pos.coordinate.longitude,
-                    latitude: pos.coordinate.latitude,
-                    accuracy: pos.coordinate.accuracy
-                }
-            },
-            function (e) { // error handler
-                return {
-                    error: e.message,
-                    status: loc.locationStatus
-                }
+            return new WinJS.Promise(function (complete, error, progress) {
+
+                loc.getGeopositionAsync().done(
+                function (pos) { // position handler
+                    complete({
+                        longitude: pos.coordinate.longitude,
+                        latitude: pos.coordinate.latitude,
+                        accuracy: pos.coordinate.accuracy
+                    });
+                },
+                function (e) { // error handler
+                    error({
+                        error: e.message,
+                        status: loc.locationStatus
+                    });
+                });
             });
         }
 
