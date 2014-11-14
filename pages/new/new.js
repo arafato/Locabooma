@@ -7,7 +7,7 @@
 
             var model = WinJS.Binding.as(new vm.new(0, 0, ""));
 
-            this.updateLocation(model);
+            this.updateCoordinates(model);
 
             this.setupEventHandlers(model);
 
@@ -17,7 +17,7 @@
         setupEventHandlers: function (model) {
             var refreshBtn = document.getElementById("refreshButton");
             refreshBtn.addEventListener("click", function () {
-                this.updateLocation(model);
+                this.updateCoordinates(model);
             }.bind(this));
         },
 
@@ -25,15 +25,22 @@
             console.log("unloading");
         },
 
-        updateLocation: function (model) {
+        updateCoordinates: function (model) {
 
             var loc = locabooma.location.instance();
             loc.getCurrentCoords().then(function (pos) {
                 model.longitude = pos.longitude;
                 model.latitude = pos.latitude;
-                model.accuracy = pos.accuracy;
-            },
+                this.updateLocation(model);
+            }.bind(this),
             function (e) {
+            })
+        },
+
+        updateLocation: function (model) {
+            var loc = locabooma.location.instance();
+            loc.getLocation(model).then(function (location) {
+                model.location = "Kranzberg";
             })
         }
     });

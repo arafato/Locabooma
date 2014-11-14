@@ -7,6 +7,7 @@
         // PRIVATE
         var loc = new Windows.Devices.Geolocation.Geolocator();
 
+        Windows.Services.Maps.MapService.serviceToken = "zzWSKnaFRhfSSAgKCpkxXA";
 
         ///////////////////////////////////////////
         ///////////////////////////////////////////
@@ -44,6 +45,22 @@
                     });
                 });
             });
+        }
+
+        impl.prototype.getLocation = function (coords) {
+            return new WinJS.Promise(function (complete, error, progress) {
+
+                var geoPoint = new Windows.Devices.Geolocation.Geopoint({ altitude: 50, latitude: coords.latitude, longitude: coords.longitude });
+
+                Windows.Services.Maps.MapLocationFinder.findLocationsAtAsync(geoPoint).done(
+                    function(result) {
+                        complete(result);
+                    },
+                    function (e) {
+                        error(e);
+                    });
+            });
+
         }
 
         impl._instance = null;

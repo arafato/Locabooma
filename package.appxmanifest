@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
   <Identity Name="18a0e862-d103-4495-a63b-e1eb199a48a1" Version="1.0.0.0" Publisher="CN=Oliver" />
-  <mp:PhoneIdentity PhoneProductId="18a0e862-d103-4495-a63b-e1eb199a48a1" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <mp:PhoneIdentity PhoneProductId="2822601d-079c-4ced-b6ec-7729e0d90520" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Locabooma</DisplayName>
     <PublisherDisplayName>Oliver</PublisherDisplayName>
