@@ -5,25 +5,36 @@
             var appBar = document.getElementById("appbar").winControl;
             appBar.showOnlyCommands([common.constants.appBarSaveId]);
 
-            var loc = locabooma.location.instance();
+            var model = WinJS.Binding.as(new vm.new(0, 0, ""));
 
-            loc.getCurrentCoords().then(function (pos) {
-                var l = pos.longitude;
-            },
-            function (e) {
-            })
+            this.updateLocation(model);
 
-            this.setupEventHandlers(options);
+            this.setupEventHandlers(model);
 
-            WinJS.Binding.processAll(document.getElementById("bookmarkpage"), options);
+            WinJS.Binding.processAll(document.getElementById("bookmarkpage"), model);
         },
 
-        setupEventHandlers: function (vm) {
-            
+        setupEventHandlers: function (model) {
+            var refreshBtn = document.getElementById("refreshButton");
+            refreshBtn.addEventListener("click", function () {
+                this.updateLocation(model);
+            }.bind(this));
         },
 
         unload: function () {
             console.log("unloading");
+        },
+
+        updateLocation: function (model) {
+
+            var loc = locabooma.location.instance();
+            loc.getCurrentCoords().then(function (pos) {
+                model.longitude = pos.longitude;
+                model.latitude = pos.latitude;
+                model.accuracy = pos.accuracy;
+            },
+            function (e) {
+            })
         }
     });
 })();

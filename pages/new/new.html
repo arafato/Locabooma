@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>New Bookmark</title>
+    <script src="newvm.js"></script>
     <script src="new.js"></script>
 </head>
 <body>
@@ -14,13 +15,13 @@
         <textarea rows="3" id="description"></textarea>
 
         <label for="longitude">Longitude: </label>
-        <input type="number" id="longitude" readonly />
+        <input type="number" id="longitude" data-win-bind="value: longitude" readonly />
 
         <label for="latitude">Latitude:</label>
-        <input type="number" id="latitude" readonly />
+        <input type="number" id="latitude" data-win-bind="value: latitude" readonly />
 
         <label for="location">Location</label>
-        <input type="text" id="location" readonly>
+        <input type="text" id="location" data-win-bind="value: location" />
 
         <button id="refreshButton">Refresh Location</button>
     </div>

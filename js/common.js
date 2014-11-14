@@ -16,4 +16,6 @@
     });
 
     WinJS.Namespace.define("locabooma");
+
+    WinJS.Namespace.define("vm");
 }());
