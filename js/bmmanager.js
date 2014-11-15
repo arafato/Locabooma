@@ -1,5 +1,7 @@
 ﻿(function () {
 
+    // TODO: Refactor into two classes (all and favorite) that derive from one common class
+
     ///////////////////////////////////////////
     // Singleton Pattern
     locabooma.bmmanager = (function () {
@@ -30,7 +32,7 @@
                 entries.push(new vm.bookmark("Z title2", "desc2"));
             }
 
-            return entries;
+            return new WinJS.Binding.List(WinJS.Binding.as(entries));
         }
 
         function saveBookmarks(filename, json) {
@@ -69,11 +71,12 @@
         }
 
         impl.prototype.saveAll = function () {
-            saveBookmarks(common.constants.allFile, JSON.stringify(_allvm));
+            var json = JSON.stringify(_allvm.bm);
+            saveBookmarks(common.constants.allFile, json);
         }
 
         impl.prototype.saveFavorites = function () {
-            saveBookmarks(common.constants.favoritesFile, JSON.stringify(_favoritevm));
+            saveBookmarks(common.constants.favoritesFile, JSON.stringify(_favoritevm.bm));
         }
 
         impl.prototype.all = function () {
@@ -82,6 +85,14 @@
 
         impl.prototype.favorites = function () {
             return _favoritevm;
+        }
+
+        impl.prototype.addAll = function(bookmark) {
+            _allvm.bm.push(bookmark);
+        }
+
+        impl.prototype.addFavorite = function (bookmark) {
+            _favoritevm.bm.push(bookmark);
         }
 
         impl._instance = null;

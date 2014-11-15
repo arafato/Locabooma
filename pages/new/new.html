@@ -11,8 +11,11 @@
 
         <br />
 
-        <label for="description">Description</label>
-        <textarea rows="3" id="description"></textarea>
+        <label for="title">Title: </label>
+        <input type="text" id="title" data-win-bind="value: title" />
+
+        <label for="description">Description:</label>
+        <textarea rows="2" id="description"></textarea>
 
         <label for="longitude">Longitude: </label>
         <input type="number" id="longitude" data-win-bind="value: longitude" readonly />
@@ -20,7 +23,7 @@
         <label for="latitude">Latitude:</label>
         <input type="number" id="latitude" data-win-bind="value: latitude" readonly />
 
-        <label for="location">Location</label>
+        <label for="location">Location:</label>
         <input type="text" id="location" data-win-bind="value: location" />
 
         <button id="refreshButton">Refresh Location</button>

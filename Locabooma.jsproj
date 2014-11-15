@@ -81,7 +81,6 @@
     <Content Include="css\ui-themed.theme-light.css" />
     <Content Include="pages\new\new.html" />
     <Content Include="pages\new\new.js" />
-    <Content Include="pages\new\newvm.js" />
     <Content Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />

@@ -1,14 +1,15 @@
 ﻿(function () {
+
+    var appBar = document.getElementById("appbar").winControl;
+    var bmmanager = locabooma.bmmanager.instance();
+
     WinJS.UI.Pages.define("/pages/new/new.html", {
         ready: function (element, options) {
 
-            var appBar = document.getElementById("appbar").winControl;
             appBar.showOnlyCommands([common.constants.appBarSaveId]);
 
-            var model = WinJS.Binding.as(new vm.new(0, 0, ""));
-
+            var model = WinJS.Binding.as(new vm.bookmark("Title", "Description"));
             this.updateCoordinates(model);
-
             this.setupEventHandlers(model);
 
             WinJS.Binding.processAll(document.getElementById("bookmarkpage"), model);
@@ -19,6 +20,15 @@
             refreshBtn.addEventListener("click", function () {
                 this.updateCoordinates(model);
             }.bind(this));
+
+            var abSave = document.getElementById(common.constants.appBarSaveId);
+            abSave.addEventListener("click", function () {
+                // TODO: By default there is no 2-way binding in WinJS. We need to grab the UI data
+                // and save it in the model manually before we add it ti the collection.
+
+                bmmanager.addAll(model);
+                bmmanager.saveAll();
+            })
         },
 
         unload: function () {
