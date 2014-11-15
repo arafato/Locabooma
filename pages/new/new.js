@@ -40,7 +40,22 @@
         updateLocation: function (model) {
             var loc = locabooma.location.instance();
             loc.getLocation(model).then(function (location) {
-                model.location = "Kranzberg";
+                if (location.locations.size > 0) {
+                    var town = location.locations[0].address.town;
+                    var country = location.locations[0].address.country;
+                    var street = location.locations[0].address.street;
+                    var streetNumber = location.locations[0].address.streetNumber;
+
+                    var address = [];
+                    if (town) address.push(town);
+                    if (country) address.push(country);
+                    if (street) address.push(street + streetNumber);
+                    
+                    model.location = address.join(",");
+                    return;
+                }
+
+                model.location = "N/A";
             })
         }
     });
