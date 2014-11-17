@@ -6,7 +6,7 @@
     // Singleton Pattern
     locabooma.bmmanager = (function () {
 
-            ///////////////////////////////////////////
+        ///////////////////////////////////////////
         // PRIVATE
 
         function unwrap(bindingList) {
@@ -20,29 +20,19 @@
 
         function loadBookmarks(filename) {
 
-            var storage = WinJS.Application.local;
-            var entries = [];
-            storage.exists(filename).then(function (exists) {
-                if (exists) {
-                    storage.readText(filename, "failed").then(function (content) {
-                        entries = JSON.parse(content);
-                    });
-                }
+            return new WinJS.Promise(function (complete, error, progres) {
+                var storage = WinJS.Application.local;
+                var entries = [];
+                storage.exists(filename).done(function (exists) {
+                    if (exists) {
+                        storage.readText(filename, "failed").done(function (content) {
+                            entries = JSON.parse(content);
+                            complete(entries);
+                        });
+                    }
+                });
             });
 
-            if (!entries) {
-                entries.push(new vm.bookmark("A title1", "desc1"));
-                entries.push(new vm.bookmark("B title2", "desc2"));
-                entries.push(new vm.bookmark("C title2", "desc2"));
-                entries.push(new vm.bookmark("D title2", "desc2"));
-                entries.push(new vm.bookmark("R title2", "desc2"));
-                entries.push(new vm.bookmark("V title2", "desc2"));
-                entries.push(new vm.bookmark("S title2", "desc2"));
-                entries.push(new vm.bookmark("S title2", "desc2"));
-                entries.push(new vm.bookmark("Z title2", "desc2"));
-            }
-
-            return entries;
         }
 
         function saveBookmarks(filename, list) {
@@ -73,12 +63,14 @@
         }
 
         impl.prototype.loadAll = function () {
-            var allBookmarks = loadBookmarks(common.constants.allFile);
-            _allvm = new vm.all(allBookmarks);
+            loadBookmarks(common.constants.allFile).then(function (bookmarks) {
+                _allvm = new vm.all(bookmarks);
+            })
+
         }
 
         impl.prototype.loadFavorites = function () {
-            var favoriteBookmarks = loadBookmarks(common.constants.favoritesFile);
+            throw new Error("Not implemented yet.");
         }
 
         impl.prototype.saveAll = function () {
@@ -97,7 +89,7 @@
             return _favoritevm;
         }
 
-        impl.prototype.addAll = function(bookmark) {
+        impl.prototype.addAll = function (bookmark) {
             _allvm.bm.push(bookmark);
         }
 

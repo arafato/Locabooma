@@ -12,10 +12,10 @@
         <br />
 
         <label for="title">Title: </label>
-        <input type="text" id="title" data-win-bind="value: title" />
+        <input type="text" id="title" data-win-bind="value: title Binding.Mode.twoway" />
 
         <label for="description">Description:</label>
-        <textarea rows="2" id="description"></textarea>
+        <textarea rows="2" id="description" data-win-bind="value: description Binding.Mode.twoway"></textarea>
 
         <label for="longitude">Longitude: </label>
         <input type="number" id="longitude" data-win-bind="value: longitude" readonly />
@@ -24,7 +24,7 @@
         <input type="number" id="latitude" data-win-bind="value: latitude" readonly />
 
         <label for="location">Location:</label>
-        <input type="text" id="location" data-win-bind="value: location" />
+        <input type="text" id="location" data-win-bind="value: location Binding.Mode.twoway" />
 
         <button id="refreshButton">Refresh Location</button>
     </div>
