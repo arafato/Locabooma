@@ -30,7 +30,7 @@
         },
 
         all: function (entries) {
-            this.bm = entries;
+            this.bm = new WinJS.Binding.List(WinJS.Binding.as(entries));
             this.bookmarks = this.bm.createGrouped(getGroupKey, getGroupData, compareGroups);
             this.currentBookmark = new vm.bookmark();
         }

@@ -24,7 +24,6 @@
             nav.history.current.initialPlaceholder = true;
 
             locabooma.bmmanager.instance().loadAll();
-            locabooma.bmmanager.instance().loadFavorites();
 
             // Optimize the load of the application and while the splash screen is shown, execute high priority scheduled work.
             ui.disableAnimations();

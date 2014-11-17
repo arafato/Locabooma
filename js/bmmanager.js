@@ -7,20 +7,30 @@
     locabooma.bmmanager = (function () {
 
             ///////////////////////////////////////////
-            // PRIVATE
+        // PRIVATE
+
+        function unwrap(bindingList) {
+            var newList = [];
+            for (var i = 0; i < bindingList.length; i++) {
+                newList.push(WinJS.Binding.unwrap(bindingList.getAt(i)));
+            }
+
+            return newList;
+        };
+
         function loadBookmarks(filename) {
 
             var storage = WinJS.Application.local;
             var entries = [];
             storage.exists(filename).then(function (exists) {
                 if (exists) {
-                    storage.readText(filename, "").then(function (content) {
+                    storage.readText(filename, "failed").then(function (content) {
                         entries = JSON.parse(content);
                     });
                 }
             });
 
-            if (entries.length === 0) {
+            if (!entries) {
                 entries.push(new vm.bookmark("A title1", "desc1"));
                 entries.push(new vm.bookmark("B title2", "desc2"));
                 entries.push(new vm.bookmark("C title2", "desc2"));
@@ -32,12 +42,13 @@
                 entries.push(new vm.bookmark("Z title2", "desc2"));
             }
 
-            return new WinJS.Binding.List(WinJS.Binding.as(entries));
+            return entries;
         }
 
-        function saveBookmarks(filename, json) {
+        function saveBookmarks(filename, list) {
             var storage = WinJS.Application.local;
-            storage.writeText(filename, json);
+            var content = JSON.stringify(unwrap(list));
+            storage.writeText(filename, content);
         }
 
         var _allvm = null;
@@ -71,12 +82,11 @@
         }
 
         impl.prototype.saveAll = function () {
-            var json = JSON.stringify(_allvm.bm);
-            saveBookmarks(common.constants.allFile, json);
+            saveBookmarks(common.constants.allFile, _allvm.bm);
         }
 
         impl.prototype.saveFavorites = function () {
-            saveBookmarks(common.constants.favoritesFile, JSON.stringify(_favoritevm.bm));
+            saveBookmarks(common.constants.favoritesFile, _favoritevm.bm);
         }
 
         impl.prototype.all = function () {
