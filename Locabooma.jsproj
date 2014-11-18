@@ -66,6 +66,7 @@
     <Content Include="js\navigator.js" />
     <Content Include="js\vm.js" />
     <Content Include="js\winjs\binding.js" />
+    <Content Include="js\winjs\converter.js" />
     <Content Include="packages.config" />
     <Content Include="pages\detail\detail.html" />
     <Content Include="pages\detail\detail.js" />

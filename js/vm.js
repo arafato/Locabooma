@@ -26,7 +26,11 @@
             this.longitude = 0.0,
             this.latitude = 0.0,
             this.location = "";
-            this.image = ""
+            this.image = "";
+            this.town = "";
+            this.country = "";
+            this.street = "";
+            this.streetNumber = "";
         },
 
         all: function (entries) {
@@ -39,4 +43,15 @@
     vm.all.prototype.selectBookmark = function (index) {
         this.currentBookmark = this.bookmarks.getAt(index);
     };
+
+    //Object.defineProperty(vm.bookmark.prototype, "fullAddress", {
+    //    get: function () {
+    //        var address = [];
+    //        if (this.town) address.push(this.town);
+    //        if (this.country) address.push(this.country);
+    //        if (this.street) address.push(this.street + this.streetNumber);
+
+    //        return address.join(",");
+    //    }
+    //})
 })();

@@ -30,6 +30,9 @@
                             complete(entries);
                         });
                     }
+                    else {
+                        complete([]);
+                    }
                 });
             });
 

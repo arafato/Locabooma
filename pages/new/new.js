@@ -62,6 +62,10 @@
                     if (street) address.push(street + streetNumber);
                     
                     model.location = address.join(",");
+                    model.country = country;
+                    model.town = town;
+                    model.street = street;
+                    model.streetNumber = streetNumber;
                     return;
                 }
 

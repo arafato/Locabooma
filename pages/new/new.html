@@ -7,8 +7,8 @@
 </head>
 <body>
     <div id="bookmarkpage">
-        <img id="image" src="#" />
-
+        <img id="image" src="#" data-win-bind="src: image; style.display: image converter.visibleImg" width="100" height="100"/>
+        <button id="btn-takePhoto" data-win-bind="style.display: image converter.visiblePhoto">Take Photo</button>
         <br />
 
         <label for="title">Title: </label>
@@ -24,7 +24,7 @@
         <input type="number" id="latitude" data-win-bind="value: latitude" readonly />
 
         <label for="location">Location:</label>
-        <input type="text" id="location" data-win-bind="value: location Binding.Mode.twoway" />
+        <input type="text" id="location" data-win-bind="value: location" readonly />
 
         <button id="refreshButton">Refresh Location</button>
     </div>
